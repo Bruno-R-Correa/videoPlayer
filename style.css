@@ -19,19 +19,29 @@ input{
     outline: none;
 }
 
+::-webkit-input-placeholder {
+    color: white;
+}
+
 #video{
    border: 2px double rgb(64, 86, 80);
    border-radius: 20px;
-   margin: 1%;
-   margin-left: 24%;
-   padding-left: 1%;
-   margin-right: 24%;
-   padding-right: 1%;
-   font-weight: 500;
-   font-size: 1.1em;
-   height: 100%;
+   padding-left: 10px;
+   padding-right: 10px;
+   width: 80%;
+   margin-left: auto;
+   margin-right: auto;
+   margin-top: 40px;
+   height: 70vh;
+   min-height: 400px;
+   padding-bottom: 30px;
 }
 
-iframe{
-    margin-top: 2%;
+#pl{
+    margin-top: 10px;
+}
+
+#mostra{
+    margin-left: 10px;
+    visibility: hidden;
 }

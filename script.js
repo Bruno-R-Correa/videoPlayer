@@ -51,3 +51,22 @@ function loadVideo(data){
         i++;
     }
 }
+
+function esconde(){
+    let a = document.getElementById('esconde');
+    let b = document.getElementById('mostra');
+    let c = document.getElementById('pl');
+    a.style.visibility = 'hidden';
+    b.style.visibility = 'visible';
+    c.style.visibility = 'hidden';
+}
+
+function mostra(){
+    let a = document.getElementById('esconde');
+    let b = document.getElementById('mostra');
+    let c = document.getElementById('pl');
+    a.style.visibility = 'visible';
+    b.style.visibility = 'hidden';
+    c.style.visibility = 'visible';
+}
+
