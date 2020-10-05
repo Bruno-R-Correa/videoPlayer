@@ -1,0 +1,36 @@
+body{
+    font-family: 'Ubuntu', FontAwesome, sans-serif;
+    background-color: lightslategrey;
+    color: white;
+    outline: none;
+}
+
+label{
+    margin-left: 1%;
+}
+
+#vidId{
+    margin: 1%;
+}
+
+input{
+    background-color: rgba(105,105,100);
+    color: white;
+}
+
+#video{
+   border: 2px double rgb(64, 86, 116);
+   border-radius: 20px;
+   margin: 1%;
+   margin-left: 24%;
+   padding-left: 1%;
+   margin-right: 24%;
+   padding-right: 1%;
+   font-weight: 500;
+   font-size: 1.1em;
+   height: 100%;
+}
+
+iframe{
+    margin-top: 2%;
+}
