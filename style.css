@@ -16,6 +16,7 @@ label{
 input{
     background-color: rgba(105,105,100);
     color: white;
+    outline: none;
 }
 
 #video{
