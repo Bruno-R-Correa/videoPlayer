@@ -3,25 +3,14 @@ var tp = window.outerWidth;
     setInterval(verifica, 100);
 })()
 
-function abc() {
+function abc(b) {
     let a = document.getElementById('pl');
-    let b = document.getElementById('vidId').value;
-    if (b != '') {
+    if (b !== '') {
         a.style.visibility = 'visible';
         a.src = `https://www.youtube.com/embed/${b}?autoplay=1`;
     }
     else {
         alert("Nenhum código inserido!");
-    }
-}
-
-function busca() {
-    let b = document.getElementById('pesq').value;
-    if (b != '') {
-        window.open(`https://www.youtube.com/results?search_query=${b}`);
-    }
-    else {
-        alert("Nenhum elemento a buscar!");
     }
 }
 
@@ -37,13 +26,28 @@ function tamanho(c) {
 
 function verifica() {
     let t = window.outerWidth;
-    if (tp != t) {
-        console.log(t);
-        console.log(tp);
+    if (tp !== t) {
         tamanho(t);
         tp = t;
     }
 }
 
+function fetchAPI(){
+    let ytQuery = document.getElementById('vidId').value;
+    let formatedQuery = ytQuery.replace(' ', '+');
+    fetch(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyCjup6-py50inE76mNX_gEtlqda_MU6-mQ&q=${formatedQuery}`)
+        .then(response => response.json())
+        .then(data => loadVideo(data))
+}
 
-
+function loadVideo(data){
+    let i = 0;
+    while(true){
+        let item = data.items[i].id;
+        if(item.kind === "youtube#video") {
+            abc(item.videoId);
+            break;
+        }
+        i++;
+    }
+}
