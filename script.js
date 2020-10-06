@@ -1,4 +1,5 @@
  var tp = window.outerWidth;
+ var k = 0;
 (() => {
     setInterval(verifica, 100);
 })()
@@ -34,29 +35,46 @@ function verifica() {
 
 function fetchAPI(){
     let ytQuery = document.getElementById('vidId').value;
+    let key1= 'AIzaSyCOtqSGBoFHE3XfJ9Uyj7FimxiCFFRfGNo';
+    let key2= 'AIzaSyCjup6-py50inE76mNX_gEtlqda_MU6-mQ';
     if(ytQuery.length === 0) alert("Nada a pesquisar!");
     else{
         let formatedQuery = ytQuery.replace(' ', '+');
-        fetch(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyCjup6-py50inE76mNX_gEtlqda_MU6-mQ&q=${formatedQuery}`)
-        .then(response => response.json())
-        .then(data => loadVideo(data))
+        if(k === 0){
+            fetch(`https://www.googleapis.com/youtube/v3/search?key=${key2}&q=${formatedQuery}`)
+            .then(response => response.json())
+            .then(data => loadVideo(data))
+        }
+        else if(k ===1){
+            fetch(`https://www.googleapis.com/youtube/v3/search?key=${key1}&q=${formatedQuery}`)
+            .then(response => response.json())
+            .then(data => loadVideo(data))
+        }
     }
 }
 
 function loadVideo(data){
     let i = 0;
     while(true){
-        /*let ver = data.error.code;
-        if(ver === 403) {
-            alert("A busca não foi concluída. Já foram realizadas demasiadas buscas hoje!");
-            break;
-        }*/
-        let item = data.items[i].id;
-        if((item.kind === "youtube#video")  || (item.kind === "youtube#playlist")) {
-            abc(item.videoId);
+        let ver = typeof data.error === "undefined" ? 0 : data.error.code;
+        if (k === 2){
+            alert("A busca não foi concluída. O limite de pesquisas de hoje foi excedido!");
             break;
         }
-        i++;
+
+        if (ver === 403) {
+            k++;
+            fetchAPI();
+            break;
+        }
+        else{
+            let item = data.items[i].id;
+            if((item.kind === "youtube#video")  || (item.kind === "youtube#playlist")) {
+                abc(item.videoId);
+                break;
+            }
+            i++;
+        }
     }
 }
 
