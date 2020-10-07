@@ -94,3 +94,9 @@ function mostra(){
     b.style.visibility = 'hidden';
     c.style.visibility = 'visible';
 }
+
+function qualidade(){
+    var player = document.getElementById("pl");
+    player.setPlaybackQuality('hd1080');
+    player.playVideo();
+}
