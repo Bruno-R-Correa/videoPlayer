@@ -4,6 +4,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="UTF-8">
         <title>YouVideo</title>
+        <link rel="icon" href="media/fav.png">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <link rel="stylesheet" href="style.css">
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
@@ -20,26 +21,26 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                  <a class="nav-link" href="index.html">Home </a>
+                  <a class="nav-link" href="index.html">Home <i class="fas fa-home"></i></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Music <span class="sr-only">(current)</span></a>
+                    <a class="nav-link active" href="#">Music <i class="fas fa-guitar"></i><span class="sr-only">(current)</span></a>
                 </li>
-                <!--<li class="nav-item dropdown">
+                <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dropdown
+                    Mais <i class="fas fa-plus"></i><span class="sr-only">(current)</span>
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Rádio <span class="badge badge-danger">hot  <i class="fas fa-fire"></i></span></a>
+                    <a class="dropdown-item disabled" href="#">Em Breve!</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item disabled" href="#">Surpresa!</a>
                   </div>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                 </li>
-              </ul>-->
+              </ul>
               <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="text" placeholder="Pesquisar" aria-label="Pesquisar" id="pesq">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="fetchAPI()">Buscar</button>

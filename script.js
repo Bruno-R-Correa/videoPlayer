@@ -35,42 +35,41 @@ function verifica() {
 
 function fetchAPI(){
     let ytQuery = document.getElementById('vidId').value;
-    let key1= 'AIzaSyCOtqSGBoFHE3XfJ9Uyj7FimxiCFFRfGNo';
-    let key2= 'AIzaSyCjup6-py50inE76mNX_gEtlqda_MU6-mQ';
+    let key = ['AIzaSyCjup6-py50inE76mNX_gEtlqda_MU6-mQ','AIzaSyCOtqSGBoFHE3XfJ9Uyj7FimxiCFFRfGNo','AIzaSyA3GUXoWpOWJEKK7pW0-N9GHGwT_lCpFJA','AIzaSyCpHUkyNw90HFoEU08VY3iQ0mM0l5NLZeU'];
     if(ytQuery.length === 0) alert("Nada a pesquisar!");
     else{
         let formatedQuery = ytQuery.replace(' ', '+');
-        if(k === 0){
-            fetch(`https://www.googleapis.com/youtube/v3/search?key=${key2}&q=${formatedQuery}`)
+            fetch(`https://www.googleapis.com/youtube/v3/search?key=${key[k]}&q=${formatedQuery}`)
             .then(response => response.json())
-            .then(data => loadVideo(data))
-        }
-        else if(k ===1){
-            fetch(`https://www.googleapis.com/youtube/v3/search?key=${key1}&q=${formatedQuery}`)
-            .then(response => response.json())
-            .then(data => loadVideo(data))
-        }
+            .then(data => loadVideo(data,key))
     }
 }
 
-function loadVideo(data){
+function loadVideo(data,key){
     let i = 0;
     while(true){
         let ver = typeof data.error === "undefined" ? 0 : data.error.code;
-        if (k === 2){
+        if (k === key.length){
             alert("A busca não foi concluída. O limite de pesquisas de hoje foi excedido!");
             break;
         }
 
         if (ver === 403) {
             k++;
+            console.log(k);
+            console.log(key.length);
             fetchAPI();
             break;
         }
         else{
             let item = data.items[i].id;
-            if((item.kind === "youtube#video")  || (item.kind === "youtube#playlist")) {
+            console.log(item);
+            if(item.kind === "youtube#video") {
                 abc(item.videoId);
+                break;
+            }
+            if(item.kind === "youtube#playlist"){
+                alert("Atualmente playlists não são suportadas!");
                 break;
             }
             i++;
@@ -95,4 +94,3 @@ function mostra(){
     b.style.visibility = 'hidden';
     c.style.visibility = 'visible';
 }
-

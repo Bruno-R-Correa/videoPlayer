@@ -45,3 +45,12 @@ input{
     margin-left: 10px;
     visibility: hidden;
 }
+
+#radio{
+    border: 2px dashed rgb(64, 86, 80);
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 1%;
+    width: 80%;
+    height: 10%;
+}
