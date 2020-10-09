@@ -95,8 +95,36 @@ function mostra(){
     c.style.visibility = 'visible';
 }
 
-function qualidade(){
-    var player = document.getElementById("pl");
-    player.setPlaybackQuality('hd1080');
-    player.playVideo();
+
+function troca(n){
+    let a = document.getElementById("eye");
+    let b = document.getElementById("vid");
+    let c = document.getElementById("vid2");
+    let d = document.getElementById("eye2");
+    switch(n){
+        case 0:
+            if(a.className === "fas fa-eye"){
+                a.classList = "fas fa-eye-slash";
+                b.style.visibility = "hidden";
+            }
+            else{
+                a.classList = "fas fa-eye";
+                b.style.visibility = "visible";
+            }
+            break;
+        case 1:
+            if(d.className === "fas fa-eye"){
+                d.classList = "fas fa-eye-slash";
+                c.style.visibility = "hidden";
+            }
+            else{
+                d.classList = "fas fa-eye";
+                c.style.visibility = "visible";
+            }
+            break;
+    }
+}
+
+function roda(n){
+
 }
