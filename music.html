@@ -43,8 +43,9 @@
         <!--Implementação de Vídeo Embed-->
         <div id="video">
             <input type="text" id="vidId" class="form-control-sm" size="" placeholder="Pesquisar Música:"/>
-            <button type="button" class="btn btn-outline-info" onclick="fetchAPI()"><i class="fas fa-play"></i></button>
+            <button type="button" class="btn btn-outline-info" onclick="fetchAPI()"><i id="p2" class="fas fa-play"></i></button>
             <button type="button" class="btn btn-dark" onclick="troca()"><i id="eye2" class="fas fa-eye"></i></button>
+            <button type="button" class="btn btn-dark" id="but" data-container="body" data-toggle="popover" data-placement="top" data-content="Próxima música da playlist" onclick="pula()"><i id="next" class="fas fa-forward"></i></button>
 
             <br>
             <iframe id="pl" width="100%" height="90%" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>

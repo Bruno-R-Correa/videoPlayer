@@ -1,11 +1,15 @@
  var tp = window.outerWidth;
  var k = 0;
+ var ind = 2;
+ var pid= '';
 (() => {
     setInterval(verifica, 100);
 })()
 
 function abc(b) {
     let a = document.getElementById('pl');
+    let c = document.getElementById('but');
+    c.className = "btn btn-dark disabled";
     if (b !== '') {
         a.style.visibility = 'visible';
         a.src = `https://www.youtube.com/embed/${b}?autoplay=1`;
@@ -15,16 +19,17 @@ function abc(b) {
     }
 }
 
-function listPlay(b){
+function listPlay(){
     let a = document.getElementById('pl');
-    if (b !== '') {
+    let c = document.getElementById('but');
+    c.className = "btn btn-dark";
+    if (pid !== '') {
+        a.src = `https://www.youtube.com/embed/watch?v=T_1Nx5YSuOA&list=${pid}&index=${ind}?autoplay=1`;
         a.style.visibility = 'visible';
-        a.src = `https://www.youtube.com/embed/watch?v=T_1Nx5YSuOA&list=${b}&index=2?autoplay=1`;
     }
     else {
         alert("Nenhum código inserido!");
     }
-    // https://www.youtube.com/watch?v=kd6hTuN0bLg&list=RD9_gkpYORQLU&index=14
 }
 
 function tamanho(c) {
@@ -72,13 +77,15 @@ function loadVideo(data,key){
             break;
         }
         else{
-            let item = data.items[i].id;
+            let item;
+            if(data.items.length !== 0) item = data.items[i].id;
             if(item.kind === "youtube#video") {
                 abc(item.videoId);
                 break;
             }
             if(item.kind === "youtube#playlist"){
-                listPlay(item.playlistId);
+                pid = item.playlistId;
+                listPlay();
                 break;
             }
             i++;
@@ -126,6 +133,11 @@ function troca(n){
     }
 }
 
-function roda(n){
-
+function pula(){
+    let c = document.getElementById('but');
+    if(!c.className === "btn btn-dark disabled")
+    {
+        ++ind;
+        listPlay();
+    }
 }
