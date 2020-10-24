@@ -15,6 +15,18 @@ function abc(b) {
     }
 }
 
+function listPlay(b){
+    let a = document.getElementById('pl');
+    if (b !== '') {
+        a.style.visibility = 'visible';
+        a.src = `https://www.youtube.com/embed/watch?v=T_1Nx5YSuOA&${b}&index=2?autoplay=1`;
+    }
+    else {
+        alert("Nenhum código inserido!");
+    }
+    // https://www.youtube.com/watch?v=kd6hTuN0bLg&list=RD9_gkpYORQLU&index=14
+}
+
 function tamanho(c) {
     let t = document.getElementById('vidId');
     if (c < 600) {
@@ -56,8 +68,6 @@ function loadVideo(data,key){
 
         if (ver === 403) {
             k++;
-            console.log(k);
-            console.log(key.length);
             fetchAPI();
             break;
         }
@@ -69,7 +79,8 @@ function loadVideo(data,key){
                 break;
             }
             if(item.kind === "youtube#playlist"){
-                alert("Atualmente playlists não são suportadas!");
+                listPlay(item.playlistId);
+                console.log(item);
                 break;
             }
             i++;
@@ -77,30 +88,12 @@ function loadVideo(data,key){
     }
 }
 
-function esconde(){
-    let a = document.getElementById('esconde');
-    let b = document.getElementById('mostra');
-    let c = document.getElementById('pl');
-    a.style.visibility = 'hidden';
-    b.style.visibility = 'visible';
-    c.style.visibility = 'hidden';
-}
-
-function mostra(){
-    let a = document.getElementById('esconde');
-    let b = document.getElementById('mostra');
-    let c = document.getElementById('pl');
-    a.style.visibility = 'visible';
-    b.style.visibility = 'hidden';
-    c.style.visibility = 'visible';
-}
-
-
 function troca(n){
     let a = document.getElementById("eye");
     let b = document.getElementById("vid");
     let c = document.getElementById("vid2");
     let d = document.getElementById("eye2");
+    let e = document.getElementById("pl");
     switch(n){
         case 0:
             if(a.className === "fas fa-eye"){
@@ -120,6 +113,16 @@ function troca(n){
             else{
                 d.classList = "fas fa-eye";
                 c.style.visibility = "visible";
+            }
+            break;
+        default:
+            if(d.className === "fas fa-eye"){
+                d.classList = "fas fa-eye-slash";
+                e.style.visibility = "hidden";
+            }
+            else{
+                d.classList = "fas fa-eye";
+                e.style.visibility = "visible";
             }
             break;
     }
