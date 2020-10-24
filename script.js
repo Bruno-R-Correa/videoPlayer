@@ -19,7 +19,7 @@ function listPlay(b){
     let a = document.getElementById('pl');
     if (b !== '') {
         a.style.visibility = 'visible';
-        a.src = `https://www.youtube.com/embed/watch?v=T_1Nx5YSuOA&${b}&index=2?autoplay=1`;
+        a.src = `https://www.youtube.com/embed/watch?v=T_1Nx5YSuOA&list=${b}&index=2?autoplay=1`;
     }
     else {
         alert("Nenhum código inserido!");
@@ -73,14 +73,12 @@ function loadVideo(data,key){
         }
         else{
             let item = data.items[i].id;
-            console.log(item);
             if(item.kind === "youtube#video") {
                 abc(item.videoId);
                 break;
             }
             if(item.kind === "youtube#playlist"){
                 listPlay(item.playlistId);
-                console.log(item);
                 break;
             }
             i++;
