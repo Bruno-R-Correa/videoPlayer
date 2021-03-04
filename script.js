@@ -137,7 +137,15 @@ function pula(){
     let c = document.getElementById('but');
     if(!c.className === "btn btn-dark disabled")
     {
-        ++ind;
+        ind++;
         listPlay();
     }
+}
+
+function limpar() { 
+  document.getElementById('vidId').value = "";
+}
+
+function verifica(e) {
+  if (e !== undefined) if(e.key === 'Enter' || e.keyCode === 13) fetchAPI();
 }
