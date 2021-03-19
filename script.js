@@ -144,6 +144,7 @@ function pula(){
 
 function limpar() { 
   document.getElementById('vidId').value = "";
+  document.getElementById('vidId').focus();
 }
 
 function verifica(e) {
